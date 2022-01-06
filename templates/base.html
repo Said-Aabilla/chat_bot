@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <head>
     <meta charset="UTF-8">
     <title>Chatbot</title>
@@ -23,6 +23,7 @@
                 <div></div>
             </div>
             <div class="chatbox__footer">
+                <button class="chatbox__send--footer audio__button"><div class="icon-chat fas fa-microphone"></div></button>
                 <input type="text" placeholder="Write a message...">
                 <button class="chatbox__send--footer send__button">Send</button>
             </div>

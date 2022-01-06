@@ -3,8 +3,8 @@ class Chatbox {
         this.args = {
             openButton: document.querySelector('.chatbox__button'),
             chatBox: document.querySelector('.chatbox__support'),
-            sendButton: document.querySelector('.send__button')
-            // audioButton: document.querySelector('.audio__button')
+            sendButton: document.querySelector('.send__button'),
+            audioButton: document.querySelector('.audio__button')
         }
 
         this.state = false;
@@ -12,13 +12,13 @@ class Chatbox {
     }
 
     display() {
-        const {openButton, chatBox, sendButton /*audioButton*/} = this.args;
+        const {openButton, chatBox, sendButton ,audioButton} = this.args;
 
         openButton.addEventListener('click', () => this.toggleState(chatBox))
 
         sendButton.addEventListener('click', () => this.onSendButton(chatBox))
 
-        // audioButton.addEventListener('click', () => this.onAudioButton(chatBox))
+        audioButton.addEventListener('click', () => this.onAudioButton(chatBox))
 
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
@@ -69,30 +69,30 @@ class Chatbox {
           });
     }
 
-    // onAudioButton(chatbox) {
-    //     fetch('http://127.0.0.1:5000/audio', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ message: null }),
-    //         mode: 'cors',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //       })
-    //       .then(r => r.json())
-    //       .then(r => {
-    //         let question = { name: "User", message: decode_utf8(r.question) };
-    //         let response = { name: "Sam", message: decode_utf8(r.answer) };
-    //         this.messages.push(question);
-    //         this.messages.push(response);
-    //         this.updateChatText(chatbox);
-    //         textField.value = ''
-    //
-    //     }).catch((error) => {
-    //         console.error('Error:', error);
-    //         this.updateChatText(chatbox)
-    //         textField.value = ''
-    //       });
-    // }
+    onAudioButton(chatbox) {
+        fetch($SCRIPT_ROOT +'/audio', {
+            method: 'POST',
+            body: JSON.stringify({ message: null }),
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          })
+          .then(r => r.json())
+          .then(r => {
+            let question = { name: "User", message: decode_utf8(r.question) };
+            let response = { name: "Sam", message: decode_utf8(r.answer) };
+            this.messages.push(question);
+            this.messages.push(response);
+            this.updateChatText(chatbox);
+            textField.value = ''
+
+        }).catch((error) => {
+            console.error('Error:', error);
+            this.updateChatText(chatbox)
+            textField.value = ''
+          });
+    }
 
     updateChatText(chatbox) {
         var html = '';
