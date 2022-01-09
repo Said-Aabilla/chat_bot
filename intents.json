@@ -1,6 +1,24 @@
 {
   "intents": [
     {
+      "tag": "greetingar",
+      "patterns": [
+        "السلام عليكم"
+      ],
+      "responses": [
+        " عليكم السلام "
+      ]
+    },
+    {
+      "tag": "greetingfr",
+      "patterns": [
+        "bonjour"
+      ],
+      "responses": [
+        "bonjour said et reda"
+      ]
+    },
+    {
       "tag": "greeting",
       "patterns": [
         "Hi",
@@ -19,7 +37,11 @@
     },
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "See you later", "Goodbye"],
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye"
+      ],
       "responses": [
         "See you later, thanks for visiting",
         "Have a nice day",
@@ -28,8 +50,17 @@
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thank's a lot!"
+      ],
+      "responses": [
+        "Happy to help!",
+        "Any time!",
+        "My pleasure"
+      ]
     },
     {
       "tag": "funny",

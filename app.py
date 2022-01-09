@@ -21,12 +21,13 @@ def predict():
 @app.post("/audio")
 def predictAudio():
     audio = get_audio()
-    text = audio_to_text(audio)
+    lang = request.get_json().get("lang")
+    print(lang)
+    text = audio_to_text(audio,lang)
     print(text)
     response = get_response(text)
-    print(text)
     print(response)
-    play_sound(response.encode("windows-1252").decode("utf-8"))
+    play_sound(response,language=lang[0:2])
     return jsonify({"question": text, "answer": response})
 
 

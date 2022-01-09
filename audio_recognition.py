@@ -18,10 +18,10 @@ def get_audio():
     return audio
 
 
-def audio_to_text(audio):
+def audio_to_text(audio, lang):
     text = ""
     try:
-        text = r.recognize_google(audio, language="en-EN")  # , language="fr-FR"
+        text = r.recognize_google(audio,language=lang)  # , language="fr-FR"
     except sr.UnknownValueError:
         print("Speech recognition could not understand audio")
     except sr.RequestError:
@@ -29,9 +29,9 @@ def audio_to_text(audio):
     return text
 
 
-def play_sound(text):
+def play_sound(text,language):
     try:
-        tts = gtts.gTTS(text,lang='en')  # , lang='fr'
+        tts = gtts.gTTS(text,lang=language)  # , lang='fr'
         tempfile = "/home/orwel/temp.mp3"
         tts.save(tempfile)
         playsound(tempfile)
